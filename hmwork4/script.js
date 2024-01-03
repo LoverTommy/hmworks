@@ -1,19 +1,19 @@
 'use sctrict'
 
 function ObjStorageFunc() {
-    let drinks = {};
+    let storage = {};
 
     this.addValue = function(key,value) {
-        drinks[key] = value;
+        storage[key] = value;
     }
 
     this.getValue = function(key) {
-        console.log(drinks[key]);
+        return storage[key];
     }
 
     this.deleteValue = function(key) {
-        if (key in drinks) {
-            delete drinks[key];
+        if (key in storage) {
+            delete storage[key];
             return true;
         }else {
             return false;
@@ -21,7 +21,6 @@ function ObjStorageFunc() {
     }
 
     this.getKeys = function() {
-        console.log( Object.keys(drinks) );
+        return Object.keys(storage);
     }
 }
-
