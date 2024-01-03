@@ -1,26 +1,19 @@
 'use sctrict'
 
-function ObjStorageFunc(key,value) {
+function ObjStorageFunc() {
     let drinks = {};
-    
-    this.nameDrink = key;
-    this.infoDrink = value;
 
-    this.addValue = function() {
-        if (this.nameDrink in drinks) {
-            delete drinks[this.nameDrink]
-        }else {
-            drinks [this.nameDrink] = this.infoDrink;
-        }
+    this.addValue = function(key,value) {
+        drinks[key] = value;
     }
 
-    this.getValue = function() {
-        console.log(drinks[this.nameDrink]);
+    this.getValue = function(key) {
+        console.log(drinks[key]);
     }
 
-    this.deleteValue = function() {
-        if (this.nameDrink in drinks) {
-            delete drinks[this.nameDrink];
+    this.deleteValue = function(key) {
+        if (key in drinks) {
+            delete drinks[key];
             return true;
         }else {
             return false;
@@ -28,7 +21,7 @@ function ObjStorageFunc(key,value) {
     }
 
     this.getKeys = function() {
-        console.log( object.keys(drinks) );
+        console.log( Object.keys(drinks) );
     }
 }
 
