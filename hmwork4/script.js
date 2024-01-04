@@ -8,7 +8,11 @@ function ObjStorageFunc() {
     }
 
     this.getValue = function(key) {
-        return storage[key];
+        if(key in storage) {
+            return storage[key];
+        }else {
+            return 'Нет такого напитка';
+        }
     }
 
     this.deleteValue = function(key) {
@@ -25,7 +29,40 @@ function ObjStorageFunc() {
     }
 }
 
-let drinkStorage = new ObjStorageFunc ('drink1','info');
-drinkStorage.addValue('drink1','info');
-console.log(ObjStorageFunc.getKeys);
-console.log(drinkStorage.addValue('drink1','info'));
+document.querySelector('#input').onclick = function () {
+    let namDrink;
+    let info;
+
+    do {
+        namDrink = prompt('Название напитка');
+    } while (!namDrink)
+
+    do {
+        info = prompt('Рецепт:');
+    } while (!info)
+
+    drinkStorage.addValue(namDrink,info);
+    alert('Напиток успешно добавлен');
+}
+
+document.querySelector('#get-info').onclick = function () {
+    let namDrink = prompt('Название напитка:');
+    alert('Напиток:' + ' ' + namDrink + '\n' + 'Репецт:' + ' ' + drinkStorage.getValue(namDrink));
+}
+
+document.querySelector('#delete').onclick = function () {
+    let namDrink = prompt('Название напитка:');
+    if(drinkStorage.deleteValue(namDrink) == true ) {
+        drinkStorage.deleteValue(namDrink);
+        alert('Напиток успешно удалён');
+    }else {
+        alert('Такого наптка не было в списке');
+    }
+}
+
+document.querySelector('#names').onclick = function () {
+    alert(drinkStorage.getKeys());
+}
+
+
+let drinkStorage = new ObjStorageFunc ();

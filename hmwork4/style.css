@@ -1,0 +1,15 @@
+.main {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    padding-top: 300px;
+}
+
+.main p {
+    cursor: pointer;
+    transition: 0.8s;
+}
+
+.main p:hover {
+    color: blue;
+}
