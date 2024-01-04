@@ -24,3 +24,8 @@ function ObjStorageFunc() {
         return Object.keys(storage);
     }
 }
+
+let drinkStorage = new ObjStorageFunc ('drink1','info');
+drinkStorage.addValue('drink1','info');
+console.log(ObjStorageFunc.getKeys);
+console.log(drinkStorage.addValue('drink1','info'));
