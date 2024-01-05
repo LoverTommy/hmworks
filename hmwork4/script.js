@@ -11,7 +11,7 @@ function ObjStorageFunc() {
         if(key in storage) {
             return storage[key];
         }else {
-            return 'Нет такого напитка';
+            return 'Такого напитка нет в списке';
         }
     }
 
@@ -32,6 +32,7 @@ function ObjStorageFunc() {
 document.querySelector('#input').onclick = function () {
     let namDrink;
     let info;
+    let alco;
 
     do {
         namDrink = prompt('Название напитка');
@@ -40,6 +41,16 @@ document.querySelector('#input').onclick = function () {
     do {
         info = prompt('Рецепт:');
     } while (!info)
+
+    do {
+        alco = confirm('Напиток алкогольный?');
+    } while (!alco)
+
+    if (alco == true) {
+        alco = 'Да';
+    }else {
+        alco = 'Нет';
+    }
 
     drinkStorage.addValue(namDrink,info);
     alert('Напиток успешно добавлен');
@@ -52,11 +63,10 @@ document.querySelector('#get-info').onclick = function () {
 
 document.querySelector('#delete').onclick = function () {
     let namDrink = prompt('Название напитка:');
-    if(drinkStorage.deleteValue(namDrink) == true ) {
-        drinkStorage.deleteValue(namDrink);
+    if (drinkStorage.deleteValue(namDrink) == true) {
         alert('Напиток успешно удалён');
     }else {
-        alert('Такого наптка не было в списке');
+        alert('Такого напитка не было в списке');
     }
 }
 
