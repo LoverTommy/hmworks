@@ -3,14 +3,14 @@
 function ObjStorageFunc() {
     let storage = {};
 
-    this.addValue = function(key,value) {
-        storage[key] = value;
+    this.addValue = function(key,value,alco) {
+        storage[key] = {'recipe':value, 'alco':alco};
     }
 
     this.getValue = function(key) {
         if(key in storage) {
             return storage[key];
-        }else {
+        }else { 
             return 'Такого напитка нет в списке';
         }
     }
@@ -42,9 +42,7 @@ document.querySelector('#input').onclick = function () {
         info = prompt('Рецепт:');
     } while (!info)
 
-    do {
-        alco = confirm('Напиток алкогольный?');
-    } while (!alco)
+    alco = confirm('Напиток алкогольный?');
 
     if (alco == true) {
         alco = 'Да';
@@ -52,7 +50,7 @@ document.querySelector('#input').onclick = function () {
         alco = 'Нет';
     }
 
-    drinkStorage.addValue(namDrink,info);
+    drinkStorage.addValue(namDrink,info,alco);
     alert('Напиток успешно добавлен');
 }
 
