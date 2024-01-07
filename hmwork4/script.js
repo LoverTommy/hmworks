@@ -3,15 +3,15 @@
 function ObjStorageFunc() {
     let storage = {};
 
-    this.addValue = function(key,value,alco) {
-        storage[key] = {'recipe':value, 'alco':alco};
+    this.addValue = function(key,value) {
+        storage[key] = value;
     }
 
     this.getValue = function(key) {
         if(key in storage) {
             return storage[key];
-        }else { 
-            return 'Такого напитка нет в списке';
+        }else {
+            return false;
         }
     }
 
@@ -31,7 +31,7 @@ function ObjStorageFunc() {
 
 document.querySelector('#input').onclick = function () {
     let namDrink;
-    let info;
+    let recipe;
     let alco;
 
     do {
@@ -39,8 +39,8 @@ document.querySelector('#input').onclick = function () {
     } while (!namDrink)
 
     do {
-        info = prompt('Рецепт:');
-    } while (!info)
+        recipe = prompt('Рецепт:');
+    } while (!recipe)
 
     alco = confirm('Напиток алкогольный?');
 
@@ -50,13 +50,16 @@ document.querySelector('#input').onclick = function () {
         alco = 'Нет';
     }
 
-    drinkStorage.addValue(namDrink,info,alco);
+    let info = {'recipe':recipe,'alco':alco};
+
+    drinkStorage.addValue(namDrink,info);
     alert('Напиток успешно добавлен');
 }
 
 document.querySelector('#get-info').onclick = function () {
     let namDrink = prompt('Название напитка:');
-    alert('Напиток:' + ' ' + namDrink + '\n' + 'Репецт:' + ' ' + drinkStorage.getValue(namDrink));
+    let info = drinkStorage.getValue(namDrink) || alert('Такого напитка нет в списке');
+    alert('Напиток:' + ' ' + namDrink + '\n' + 'Репецт:' + ' ' + info.recipe + '\n' + 'Алкогольный:' + ' ' + info.alco);
 }
 
 document.querySelector('#delete').onclick = function () {
