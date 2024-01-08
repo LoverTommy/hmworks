@@ -58,8 +58,12 @@ document.querySelector('#input').onclick = function () {
 
 document.querySelector('#get-info').onclick = function () {
     let namDrink = prompt('Название напитка:');
-    let info = drinkStorage.getValue(namDrink) || alert('Такого напитка нет в списке');
-    alert('Напиток:' + ' ' + namDrink + '\n' + 'Репецт:' + ' ' + info.recipe + '\n' + 'Алкогольный:' + ' ' + info.alco);
+    let info = drinkStorage.getValue(namDrink);
+    if(info == undefined) {
+        alert('Такого напитка нет в списке')
+    }else {
+        alert('Напиток:' + ' ' + namDrink + '\n' + 'Репецт:' + ' ' + (info.recipe) + '\n' + 'Алкогольный:' + ' ' + (info.alco));
+    }
 }
 
 document.querySelector('#delete').onclick = function () {
@@ -140,8 +144,12 @@ let drinkStorage = new ObjStorageFunc ();
 
 // document.querySelector('#get-info').onclick = function () {
 //     let namDrink = prompt('Название напитка:');
-//     let info = drinkStorage.getValue(namDrink) || alert('Такого напитка нет в списке');
-//     alert('Напиток:' + ' ' + namDrink + '\n' + 'Репецт:' + ' ' + info.recipe + '\n' + 'Алкогольный:' + ' ' + info.alco);
+//     let info = drinkStorage.getValue(namDrink);
+//     if(info == undefined) {
+//         alert('Такого напитка нет в списке')
+//     }else {
+//         alert('Напиток:' + ' ' + namDrink + '\n' + 'Репецт:' + ' ' + (info.recipe) + '\n' + 'Алкогольный:' + ' ' + (info.alco));
+//     }
 // }
 
 // document.querySelector('#delete').onclick = function () {
