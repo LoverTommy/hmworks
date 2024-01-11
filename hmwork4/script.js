@@ -12,20 +12,19 @@ do {
 function vowels(word) {
     let letters = ['О', 'У', 'Ы', 'Э', 'Е', 'Ё', 'И', 'Ю', 'Я','А', 'а', 'о', 'у', 'ы', 'э', 'е', 'ё', 'и', 'ю', 'я'];
     let numLetters = 0;
-    let wordArr = getWord.split('');
+    let wordArr = word.split('');
     var checkedLetter = {};
 
     function lettersCheck(v) {
-        checkedLetter[v] = v;
-    }
-    letters.forEach(lettersCheck);
-
-    function wordLetterCheck(v) {
-        if (v in checkedLetter) {
+        if (v in checkedLetter){
             numLetters++;
+        }else {
+            checkedLetter[v] = v;
         }
     }
-    wordArr.forEach(wordLetterCheck);
+    letters.forEach(lettersCheck);
+    wordArr.forEach(lettersCheck);
+
 
     return numLetters;
 }
