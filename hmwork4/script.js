@@ -13,23 +13,27 @@ function vowels(word) {
     let letters = ['О', 'У', 'Ы', 'Э', 'Е', 'Ё', 'И', 'Ю', 'Я','А', 'а', 'о', 'у', 'ы', 'э', 'е', 'ё', 'и', 'ю', 'я'];
     let numLetters = 0;
     let wordArr = word.split('');
-    var checkedLetter = {};
 
     function lettersCheck(v) {
-        if (v in checkedLetter){
-            numLetters++;
-        }else {
-            checkedLetter[v] = v;
+        checkedLetters = v;
+
+        wordArr.forEach(wordCheck);
+        function wordCheck(v) {
+            if(v == checkedLetters) {
+                numLetters++;
+            }
         }
     }
     letters.forEach(lettersCheck);
-    wordArr.forEach(lettersCheck);
-
 
     return numLetters;
 }
 
 console.log(vowels(getWord));
+
+
+
+
 
 
 
