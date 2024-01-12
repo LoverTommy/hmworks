@@ -15,16 +15,11 @@ function vowels(word) {
     let wordArr = word.split('');
 
     function lettersCheck(v) {
-        checkedLetters = v;
-
-        wordArr.forEach(wordCheck);
-        function wordCheck(v) {
-            if(v == checkedLetters) {
-                numLetters++;
-            }
+        if (letters.includes(v)) {
+            numLetters++;
         }
     }
-    letters.forEach(lettersCheck);
+    wordArr.forEach(lettersCheck);
 
     return numLetters;
 }
