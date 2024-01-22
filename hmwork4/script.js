@@ -2,6 +2,57 @@
 
 
 //1
+// let getWord;
+
+// do {
+//     getWord = prompt('Введите слово','');
+// } while(!getWord)
+
+
+// function vowels(word) {
+//     let letters = ['О', 'У', 'Ы', 'Э', 'Е', 'Ё', 'И', 'Ю', 'Я','А', 'а', 'о', 'у', 'ы', 'э', 'е', 'ё', 'и', 'ю', 'я'];
+//     let numLetters = 0;
+//     let wordArr = word.split('');
+
+//     function lettersCheck(v) {
+//         if (letters.includes(v)) {
+//             numLetters++;
+//         }
+//     }
+//     wordArr.forEach(lettersCheck);
+
+//     return numLetters;
+// }
+
+// console.log(vowels(getWord));
+
+//2
+// let getWord;
+
+// do {
+//     getWord = prompt('Введите слово','');
+// } while(!getWord)
+
+
+// function vowels(word) {
+//     let letters = ['О', 'У', 'Ы', 'Э', 'Е', 'Ё', 'И', 'Ю', 'Я','А', 'а', 'о', 'у', 'ы', 'э', 'е', 'ё', 'и', 'ю', 'я'];
+//     let numLetters = 0;
+//     let wordArr = word.split('');
+
+//     function lettersCheck(v) {
+//         return letters.includes(v);
+//     }
+//     let a = wordArr.filter(lettersCheck);
+
+//     numLetters = a.length;
+
+//     return numLetters;
+// }
+
+// console.log(vowels(getWord));
+
+
+//2
 let getWord;
 
 do {
@@ -14,18 +65,17 @@ function vowels(word) {
     let numLetters = 0;
     let wordArr = word.split('');
 
-    function lettersCheck(v) {
-        if (letters.includes(v)) {
-            numLetters++;
+    function lettersCheck(r,v) {
+        if(letters.includes(v)) {
+            return numLetters++;
         }
     }
-    wordArr.forEach(lettersCheck);
+    wordArr.reduce(lettersCheck,0);
 
     return numLetters;
 }
 
 console.log(vowels(getWord));
-
 
 
 
