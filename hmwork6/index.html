@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <form name="info" action="https://fe.it-academy.by/TestForm.php" novalidate>
+        <div> <label for="developers">Разработчики:</label> <input type="text" name="developers" id="developers"> <span id="developersErr"></span></div>
+        <div> <label for="siteName">Название сайта:</label> <input type="text" name="siteName" id="siteName"> <span id="siteNameErr"></span></div>
+        <div> <label for="siteUrl">URL сайта:</label> <input type="url" name="siteUrl" id="siteUrl"> <span id="siteUrlErr"></span></div>
+        <div> <label for="date">Дата запуска сайта:</label> <input type="text" name="date" id="date"> <span id="dateErr"></span></div>
+        <div> <label for="visit">Посетителей в сутки:</label> <input type="number" name="visit" id="visit"> <span id="visitErr"></span></div>
+        <div> <label for="email">Email Для связи:</label> <input type="text" name="email" id="email"> <span id="emailErr"></span></div>
+        <div> <label for="catalog">Рубрика каталога:</label> <select name="catalog" id="catalog">
+            <option value="1">Здоровье</option>
+            <option value="2">Домашний уют</option>
+            <option value="3">Бытовая техника</option>
+        </select> <span id="catalogErr"></span></div>
+        <div> <label>Размещение:</label> 
+            <label>
+                <input type="radio" name="buy" value="free" id="free">
+                Бесплатное
+            </label> 
+
+            <label>
+                <input type="radio" name="buy" value="notFree" id="notFree">
+                Платное
+            </label> 
+
+            <label>
+                <input type="radio" name="buy" value="vip" id="vip">
+                VIP
+            </label> 
+            <span id="buyErr"></span>
+        </div>
+
+        <div> <label for="accept">Разрешить отзывы:</label> <input type="checkbox" name="accept" id="accept"> <span id="acceptErr"></span></div>
+
+        <div> <label for="description">Описание сайта:</label> <input type="text" name="description" id="description"> <span id="descriptionErr"></span></div>
+
+        <button>Опубликовать</button>
+    </form>
+    <script src="script.js"></script>
+</body>
+</html>

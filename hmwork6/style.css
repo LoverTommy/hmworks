@@ -1,0 +1,26 @@
+
+
+body {
+    display: flex;
+    justify-content: center;
+}
+
+form {
+    margin-top: 200px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+form button {
+    width: 200px;
+    align-self: center;
+    margin-top: 15px;
+}
+
+form>div span {
+    display: none;
+    width: 5px;
+    height: 5px;
+    background: red;
+}
