@@ -106,17 +106,6 @@ function emailValid(eo) {
     }
 }
 
-// function catalogValid(eo) {
-//     eo=eo||window.event;
-
-//     const catalog = formt.elements.catalog;
-//     const catalogValue = catalog.value;
-
-//     if(catalogValue == 1) {
-//         eo.preventDefault();
-//     }
-// }
-
 
 function descriptionValid(eo) {
     eo=eo||window.event;
@@ -140,16 +129,7 @@ formt.addEventListener('submit',formValid);
 function formValid(eo) {
     eo=eo||window.event;
 
-    const checkErr = document.getElementsByTagName('span');
-
-    for (let i of checkErr) {
-        if(i.style.display == 'inline-block') {
-            eo.preventDefault();
-            alert('Заполните все поля формы верно');
-            return;
-        }
-    }
-
+    
     const developers = formt.elements.developers;
     const developersValue = developers.value;
     const siteName = formt.elements.siteName;
@@ -164,14 +144,14 @@ function formValid(eo) {
     const emailValue = email.value;
     const description = formt.elements.description;
     const descriptionValue = description.value;
-
+    
     if(!developersValue) {
         eo.preventDefault();
         developersErr.style.display = 'inline-block';
     }else {
         developersErr.style.display = 'none';
     }
-
+    
     if(!siteNameValue) {
         eo.preventDefault();
         siteNameErr.style.display = 'inline-block';
@@ -214,6 +194,31 @@ function formValid(eo) {
         descriptionErr.style.display = 'none';
     }
 
+    const catalog = formt.elements.catalog;
+    const catalogValue = catalog.value;
+    const catalogErr = document.getElementById('catalogErr');
+    const accept = formt.elements.accept;
+    const acceptErr = document.getElementById('acceptErr');
+
+    catalog.onchange = function(eo) {
+        catalogErr.style.display = 'none';
+    }
+
+    if(catalogValue == "1") {
+        eo.preventDefault();
+        catalogErr.style.display = 'inline-block';
+    }
+
+
+    if(!accept.checked) {
+        eo.preventDefault();
+        acceptErr.style.display = 'inline-block';
+    }
+
+    accept.onclick = function(eo) {
+        acceptErr.style.display = 'none';
+    }
+
     const buy = formt.elements.buy;
     const buyValue = buy.value;
     const buyErr = document.getElementById('buyErr');
@@ -222,10 +227,28 @@ function formValid(eo) {
         buyErr.style.display = 'none'
     }
 
+    notFree.onclick = function(eo) {
+        buyErr.style.display = 'none'
+    }
+
+    vip.onclick = function(eo) {
+        buyErr.style.display = 'none'
+    }
+
     if(!buyValue) {
         eo.preventDefault();
         buyErr.style.display = 'inline-block'
     }else {
         buyErr.style.display = 'none'
+    }
+
+    const checkErr = document.getElementsByTagName('span');
+
+    for (let i of checkErr) {
+        if(i.style.display == 'inline-block') {
+            eo.preventDefault();
+            alert('Заполните все поля формы верно');
+            return;
+        }
     }
 }
