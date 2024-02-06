@@ -1,79 +1,52 @@
 "use strict";
 
-const box = document.getElementById("box");
-box.addEventListener("mousedown", boxMouseDown);
+const element = document.getElementsByTagName("img");
+
+for (var i of element) {
+  console.log(i);
+  i.addEventListener("mousedown", boxMouseDown);
+  i.style.padding = "0px";
+  i.style.verticalAlign = "top";
+  i.style.zIndex = '1';
+}
 
 function boxMouseDown(eo) {
   eo = eo || window.event;
-  const boxPosTop = eo.pageY;
-  const boxPosLeft = eo.pageX;
-  console.log(eo);
-  console.log(boxPosTop + " " + boxPosLeft);
 
-  box.addEventListener("mousemove", boxMouseMove);
+  const target = eo.target;
+  target.style.position = "absolute";
+  target.style.zIndex = "200";
+  target.style.opacity = "80%";
+
+  const boxPosTop = target.offsetTop;
+  const boxPosLeft = target.offsetLeft;
+
+  const mouseTop = eo.pageY;
+  const mouseLeft = eo.pageX;
+
+  const mousePointTop = mouseTop - boxPosTop;
+  const mousePointLeft = mouseLeft - boxPosLeft;
+
+  window.addEventListener("mousemove", boxMouseMove);
 
   function boxMouseMove(eo) {
     eo.preventDefault();
     eo = eo || window.event;
-    console.log(eo);
-    const mouseTop = eo.pageY;
-    const mouseLeft = eo.pageX;
-    console.log(mouseTop + " " + mouseLeft);
 
-    const boxMovePosTop = mouseTop - boxPosTop;
-    const boxMovePosLeft = mouseLeft - boxPosLeft;
+    const mouseMoveTop = eo.pageY;
+    const mouseMoveLeft = eo.pageX;
 
-    box.style.top = boxMovePosTop + "px";
-    box.style.left = boxMovePosLeft + "px";
+    const boxMoveTop = mouseMoveTop - mousePointTop;
+    const boxMoveLeft = mouseMoveLeft - mousePointLeft;
+
+    target.style.top = boxMoveTop + "px";
+    target.style.left = boxMoveLeft + "px";
+    target.addEventListener("mouseup", boxMouseUp);
   }
-
-  box.addEventListener("mouseup", boxMouseUp);
 
   function boxMouseUp(eo) {
-    eo.preventDefault();
-    eo = eo || window.event;
-    console.log("mouseUp");
-    box.removeEventListener("mousemove", boxMouseMove);
+    window.removeEventListener("mousemove", boxMouseMove);
+    target.style.opacity = "100%";
+    target.style.zIndex = "1";
   }
 }
-
-// var box = document.getElementById("box");
-// var boxPosTop = "";
-// var boxPosLeft = "";
-// var mouseTop = "";
-// var mouseLeft = "";
-// box.addEventListener("mousedown", boxMouseDown);
-
-// function boxMouseDown(eo) {
-//   eo = eo || window.event;
-//   boxPosTop = eo.pageY;
-//   boxPosLeft = eo.pageX;
-//   console.log(eo);
-//   console.log(boxPosTop + " " + boxPosLeft);
-//   box.addEventListener("mousemove", boxMouseMove);
-// }
-
-// function boxMouseMove(eo) {
-//   eo.preventDefault();
-//   eo = eo || window.event;
-//   console.log(eo);
-//   mouseTop = eo.pageY;
-//   mouseLeft = eo.pageX;
-//   console.log(mouseTop + " " + mouseLeft);
-
-//   const boxMovePosTop = mouseTop - boxPosTop;
-//   const boxMovePosLeft = mouseLeft - boxPosLeft;
-
-//   return (
-//     (box.style.top = boxMovePosTop + "px"),
-//     (box.style.left = boxMovePosLeft + "px"),
-//     box.addEventListener("mouseup", boxMouseUp)
-//   );
-// }
-
-// function boxMouseUp(eo) {
-//   eo.preventDefault();
-//   eo = eo || window.event;
-//   console.log("mouseUp");
-//   box.removeEventListener("mousemove", boxMouseMove);
-// }
