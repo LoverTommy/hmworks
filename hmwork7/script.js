@@ -1,21 +1,25 @@
 "use strict";
 
 var pos = [];
-const element = document.getElementsByTagName("img");
-for (let i = 0; i < element.length; i++) {
-  const newElement = element[i];
-  const posTop = newElement.offsetTop;
-  const posLeft = newElement.offsetLeft;
-  pos.push([posTop, posLeft]);
-}
-console.log(pos);
+window.addEventListener('load',documentReady,false);
 
-for (let i = 0; i < element.length; i++) {
-  const newElement = element[i];
-  newElement.style.position = "absolute";
-  newElement.style.top = pos[i][0] + "px";
-  newElement.style.left = pos[i][1] + "px";
-  newElement.addEventListener("mousedown", boxMouseDown);
+function documentReady() {
+  const element = document.getElementsByTagName("img");
+  for (let i = 0; i < element.length; i++) {
+    const newElement = element[i];
+    const posTop = newElement.offsetTop;
+    const posLeft = newElement.offsetLeft;
+    pos.push([posTop, posLeft]);
+  }
+  console.log(pos);
+  
+  for (let i = 0; i < element.length; i++) {
+    const newElement = element[i];
+    newElement.style.position = "absolute";
+    newElement.style.top = pos[i][0] + "px";
+    newElement.style.left = pos[i][1] + "px";
+    newElement.addEventListener("mousedown", boxMouseDown);
+  }
 }
 
 function boxMouseDown(eo) {
