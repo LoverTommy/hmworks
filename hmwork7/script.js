@@ -1,6 +1,7 @@
 "use strict";
 
 var pos = [];
+var nextZIndex = 1;
 window.addEventListener("load", documentReady, false);
 const element = document.getElementsByTagName("img");
 
@@ -40,8 +41,7 @@ function boxMouseDown(eo) {
   const mousePointTop = mouseTop - boxPosTop;
   const mousePointLeft = mouseLeft - boxPosLeft;
 
-  const targetZIndex = target.style.zIndex;
-  target.style.zIndex = Number(targetZIndex) + Number("1");
+  target.style.zIndex = nextZIndex;
 
   window.addEventListener("mousemove", boxMouseMove);
   function boxMouseMove(eo) {
@@ -66,4 +66,5 @@ function boxMouseDown(eo) {
     target.style.opacity = "100%";
     target.style.cursor = "default";
   }
+  nextZIndex = Number(nextZIndex) + Number(1);
 }
