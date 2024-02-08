@@ -1,10 +1,10 @@
 "use strict";
 
 var pos = [];
-window.addEventListener('load',documentReady,false);
+window.addEventListener("load", documentReady, false);
+const element = document.getElementsByTagName("img");
 
 function documentReady() {
-  const element = document.getElementsByTagName("img");
   for (let i = 0; i < element.length; i++) {
     const newElement = element[i];
     const posTop = newElement.offsetTop;
@@ -12,7 +12,7 @@ function documentReady() {
     pos.push([posTop, posLeft]);
   }
   console.log(pos);
-  
+
   for (let i = 0; i < element.length; i++) {
     const newElement = element[i];
     newElement.style.position = "absolute";
@@ -39,12 +39,14 @@ function boxMouseDown(eo) {
 
   const mousePointTop = mouseTop - boxPosTop;
   const mousePointLeft = mouseLeft - boxPosLeft;
-  window.addEventListener("mousemove", boxMouseMove);
 
+  const targetZIndex = target.style.zIndex;
+  target.style.zIndex = Number(targetZIndex) + Number("1");
+
+  window.addEventListener("mousemove", boxMouseMove);
   function boxMouseMove(eo) {
     eo.preventDefault();
     eo = eo || window.event;
-    target.style.zIndex = "200";
     target.style.opacity = "80%";
 
     const mouseMoveTop = eo.pageY;
@@ -62,7 +64,6 @@ function boxMouseDown(eo) {
   function boxMouseUp(eo) {
     window.removeEventListener("mousemove", boxMouseMove);
     target.style.opacity = "100%";
-    target.style.zIndex = "1";
     target.style.cursor = "default";
   }
 }
