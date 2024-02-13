@@ -72,8 +72,7 @@ class Clock {
   }
 
   startTime() {
-    setTimeout(updateTime, 0);
-    setInterval(updateTime, 1000);
+    setInterval(updateTime);
 
     function updateTime() {
       this.currTime = new Date();
@@ -88,6 +87,8 @@ class Clock {
 
       this.currTimeStr = formatDateTime(this.currTime);
       this.clockTimeStr = document.getElementById("clockTime");
+      this.clockTimeStr.style.fontSize = this.clock.offsetWidth / 10 + "px";
+      this.clockTimeStr.style.left = this.clock.offsetWidth / 3 + "px";
       this.clockTimeStr.innerHTML = this.currTimeStr;
 
       this.sec.style.transform = "rotate(" + this.secondsPos + "deg)";
