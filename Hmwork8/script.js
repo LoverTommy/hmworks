@@ -20,6 +20,7 @@ class Clock {
     this.hours = 12; //колличество часов, для цикла
     this.hourNum = 12; //для нумерации часа в каждом новом диве
     this.one = 1; //для изменения в цикле числа часа, чтобы начиналось с 12, а после 1..2..3 и т.д
+    this.startInterval = 0;
 
     this.sec = document.getElementById("sec");
     this.min = document.getElementById("min");
@@ -71,6 +72,7 @@ class Clock {
   }
 
   startTime() {
+    setTimeout(updateTime, 0);
     setInterval(updateTime, 1000);
 
     function updateTime() {
