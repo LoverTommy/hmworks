@@ -72,29 +72,30 @@ class Clock {
   }
 
   startTime() {
-    setInterval(updateTime);
+    this.updateTime();
+    setInterval(this.updateTime, 1000);
+  }
 
-    function updateTime() {
-      this.currTime = new Date();
-      this.liveSeconds = this.currTime.getSeconds();
-      this.secondsPos = this.liveSeconds * 6;
+  updateTime() {
+    this.currTime = new Date();
+    this.liveSeconds = this.currTime.getSeconds();
+    this.secondsPos = this.liveSeconds * 6;
 
-      this.liveMinutes = this.currTime.getMinutes();
-      this.minutesPos = this.liveMinutes * 6;
+    this.liveMinutes = this.currTime.getMinutes();
+    this.minutesPos = this.liveMinutes * 6;
 
-      this.liveHours = this.currTime.getHours();
-      this.hoursPos = this.liveHours * 30;
+    this.liveHours = this.currTime.getHours();
+    this.hoursPos = this.liveHours * 30;
 
-      this.currTimeStr = formatDateTime(this.currTime);
-      this.clockTimeStr = document.getElementById("clockTime");
-      this.clockTimeStr.style.fontSize = this.clock.offsetWidth / 10 + "px";
-      this.clockTimeStr.style.left = this.clock.offsetWidth / 3 + "px";
-      this.clockTimeStr.innerHTML = this.currTimeStr;
+    this.currTimeStr = formatDateTime(this.currTime);
+    this.clockTimeStr = document.getElementById("clockTime");
+    this.clockTimeStr.style.fontSize = this.clock.offsetWidth / 10 + "px";
+    this.clockTimeStr.style.left = this.clock.offsetWidth / 3 + "px";
+    this.clockTimeStr.innerHTML = this.currTimeStr;
 
-      this.sec.style.transform = "rotate(" + this.secondsPos + "deg)";
-      this.min.style.transform = "rotate(" + this.minutesPos + "deg)";
-      this.hour.style.transform = "rotate(" + this.hoursPos + "deg)";
-    }
+    this.sec.style.transform = "rotate(" + this.secondsPos + "deg)";
+    this.min.style.transform = "rotate(" + this.minutesPos + "deg)";
+    this.hour.style.transform = "rotate(" + this.hoursPos + "deg)";
   }
 }
 
