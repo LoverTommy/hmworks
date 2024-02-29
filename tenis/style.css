@@ -37,12 +37,13 @@
   position: relative;
 }
 
-#main #game #board img {
+#main #game #board #ball {
   width: 50px;
   height: 50px;
   position: absolute;
   top: 210px;
   left: 380px;
+  background-color: rgb(197, 86, 86);
 }
 
 #main #game #board #leftItem {
